@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(45deg, #c75d28, #2373e2);
+}
+
+.calculator {
+  border: 1px solid #717377;
+  padding: 20px;
+  border-radius: 16px;
+  background: linear-gradient(45deg, #ff7ac5, #bb2f2f);
+  box-shadow: 0px 3px 15px rgba(255, 255, 255, 0.5);
+}
+
+input {
+  width: 320px;
+  border: none;
+  padding: 24px;
+  margin: 10px;
+  box-shadow: 0px 3px 15px rgbs(84, 84, 84, 0.1);
+  font-size: 40px;
+  text-align: right;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+input.active {
+  background: white;
+}
+input::placeholder {
+  color: #000000;
+}
+
+button {
+  border: none;
+  width: 60px;
+  height: 60px;
+  margin: 10px;
+  border-radius: 50%;
+  background: transparent;
+  color: #ffffff;
+  font-size: 20px;
+  box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+
+.equalBtn {
+  background-color: #fb7c14;
+}
+
+.operator {
+  color: #6dee0a;
+  font-weight: bolder;
+}
+
+.special {
+  color: rgb(255, 255, 255);
+  width: 120px;
+  border-radius: 25%;
+}
+
+.button:hover {
+  background-color: #fc2b6d;
+}
+p {
+  text-align: center;
+  color: white;
+}
+
+#github {
+  margin-left: 10%;
+}
+
+#github img {
+  width: 40px;
+}
+
+#github span {
+  margin-left: 0.5em;
+  font-size: larger;
+  color: white;
+  position: relative;
+  bottom: 0.8rem;
+}
