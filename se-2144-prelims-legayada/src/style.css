@@ -41,7 +41,7 @@ input.active {
   background: rgb(250, 238, 238);
 }
 input.inactive {
-  background-color: black;
+  background: linear-gradient(45deg, #0a0125, #3e4b38);
 }
 input.inactive::placeholder {
   color: transparent;

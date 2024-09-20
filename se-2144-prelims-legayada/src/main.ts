@@ -84,12 +84,14 @@ function appendToDisplayString(display: string, character: string) {
 }
 
 function goodbyeSequence() {
-  inputBox.value = 'goodbye'
-  setTimeout(() => {
-    inputBox.value = ''
-    inputBox.classList.remove('active')
-    inputBox.classList.add('inactive')
-  }, 2000)
+  if (inputBox.classList.contains('active')) {
+    inputBox.value = 'goodbye'
+    setTimeout(() => {
+      inputBox.value = ''
+      inputBox.classList.remove('active')
+      inputBox.classList.add('inactive')
+    }, 2000)
+  }
 }
 
 function randomHello(event: MouseEvent) {
