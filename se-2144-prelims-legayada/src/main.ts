@@ -26,7 +26,7 @@ specialButtons.forEach((button) => {
         button.addEventListener('click', randomHello)
         break
       default:
-        throw new Error('unexpected fault')
+        errorMessage('Unexpected input!')
     }
   }
 })
@@ -52,7 +52,7 @@ operatorButtons.forEach((button) => {
       // the equal button should change the input box value
 
       default:
-        throw new Error('unexpected fault')
+        errorMessage('Unexpected input!')
     }
   }
 })
@@ -74,62 +74,96 @@ digitButtons.forEach((button) => {
         button.addEventListener('click', addToDisplay)
         break
       default:
-        throw new Error('unexpeced fault')
+        errorMessage('Unexpected input!')
     }
   }
 })
 // special button functions
 function appendToDisplayString(display: string, character: string) {
-  return display + ' ' + character || ''
+  return display + character || ''
 }
 
 function goodbyeSequence() {
-  console.log('Goodbye')
+  inputBox.value = 'goodbye'
+  setTimeout(() => {
+    inputBox.value = ''
+    inputBox.classList.remove('active')
+    inputBox.classList.add('inactive')
+  }, 2000)
 }
 
 function randomHello(event: MouseEvent) {
-  inputBox.value = ''
-  const hellos = ['Hello', 'Hola', 'Kamusta', 'こんにちは', '你好']
-  if (event.target instanceof HTMLButtonElement) {
-    if (!hellos.includes(inputBox.value)) {
-      inputBox.value = hellos[0]
-    } else if (hellos.indexOf(inputBox.value) === hellos.length - 1) {
-      inputBox.value = hellos[0]
-    } else {
-      inputBox.value = hellos[hellos.indexOf(inputBox.value) + 1]
+  if (inputBox.classList.contains('active')) {
+    const hellos = ['Hello', 'Hola', 'Kamusta', 'こんにちは', '你好']
+    if (event.target instanceof HTMLButtonElement) {
+      if (!hellos.includes(inputBox.value)) {
+        inputBox.value = hellos[0]
+      } else if (hellos.indexOf(inputBox.value) === hellos.length - 1) {
+        inputBox.value = hellos[0]
+      } else {
+        inputBox.value = hellos[hellos.indexOf(inputBox.value) + 1]
+      }
     }
   }
-
-  // console.log('Hello')
 }
 
 // operator button functions
 
 function allClear() {
-  console.log('all cleaer')
-  // if inputbox has a class of inactive set it to active else disregard
+  if (inputBox.classList.contains('active')) {
+    console.log('all clear')
+    inputBox.value = ''
+  } else {
+    inputBox.classList.remove('inactive')
+    inputBox.classList.add('active')
+  }
 }
 
 function backSpace() {
-  console.log('backspace')
-  // try-catch block to make sure that the string doesn't go out of range
+  if (inputBox.classList.contains('active')) {
+    console.log('backspace')
+    if (inputBox.value.length > 0) {
+      inputBox.value = inputBox.value.slice(0, -1)
+    } else {
+      inputBox.value = ''
+    }
+  }
 }
 
 //add to display to evaluate
 
 function addToDisplay(event: MouseEvent) {
-  if (event.target instanceof HTMLButtonElement) {
-    const button = event.target
-    inputBox.value = appendToDisplayString(inputBox.value, button.innerText)
+  if (inputBox.classList.contains('active')) {
+    if (event.target instanceof HTMLButtonElement) {
+      const button = event.target
+      const hellos = ['Hello', 'Hola', 'Kamusta', 'こんにちは', '你好']
+      if (hellos.includes(inputBox.value)) {
+        allClear()
+      }
+      inputBox.value = appendToDisplayString(inputBox.value, button.innerText)
+    }
   }
 }
 
 function evaluateDisplay(event: MouseEvent) {
-  if (event.target instanceof HTMLButtonElement) {
-    const button = event.target
-    console.log(button.innerHTML)
-    //   try {
-    //   } catch {}
-    // }
+  if (inputBox.classList.contains('active')) {
+    if (event.target instanceof HTMLButtonElement) {
+      const button = event.target
+      console.log(button.innerHTML)
+      try {
+        const answer = eval(inputBox.value)
+        if (answer == Infinity) {
+          errorMessage()
+        } else {
+          inputBox.value = answer
+        }
+      } catch {
+        errorMessage()
+      }
+    }
   }
+}
+
+function errorMessage(message: string = 'Something went wrong!') {
+  alert(message)
 }

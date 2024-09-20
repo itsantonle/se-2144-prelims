@@ -40,7 +40,13 @@ input {
 input.active {
   background: rgb(250, 238, 238);
 }
-input::placeholder {
+input.inactive {
+  background-color: black;
+}
+input.inactive::placeholder {
+  color: transparent;
+}
+input.active::placeholder {
   color: #c3c3c3;
 }
 
