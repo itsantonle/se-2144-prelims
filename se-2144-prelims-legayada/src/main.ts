@@ -154,6 +154,7 @@ function addToDisplay(event: MouseEvent) {
   if (inputBox.classList.contains('active')) {
     if (event.target instanceof HTMLButtonElement) {
       const button = event.target
+      console.log(button.innerText)
       const hellos = ['Hello', 'Hola', 'Kamusta', 'こんにちは', '你好']
       if (hellos.includes(inputBox.value)) {
         allClear()
