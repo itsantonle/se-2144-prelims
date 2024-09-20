@@ -84,14 +84,30 @@ function appendToDisplayString(display: string, character: string) {
 }
 
 function goodbyeSequence() {
+  inputBox.value = ''
   if (inputBox.classList.contains('active')) {
-    inputBox.value = 'goodbye'
+    textTyped(inputBox, 'Goodbye!')
     setTimeout(() => {
       inputBox.value = ''
       inputBox.classList.remove('active')
       inputBox.classList.add('inactive')
     }, 2000)
   }
+}
+
+// this is a recursive function
+function textTyped(
+  element: HTMLInputElement,
+  text: string,
+  i: number = 0
+): void {
+  element.value += text[i]
+  if (i === text.length - 1) {
+    return
+  }
+  setTimeout(() => {
+    textTyped(element, text, i + 1)
+  }, 80)
 }
 
 function randomHello(event: MouseEvent) {
