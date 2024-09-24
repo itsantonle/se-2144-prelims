@@ -1,4 +1,6 @@
+/* google fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Damion&display=swap');
 
 * {
   margin: 0;
@@ -86,18 +88,54 @@ p {
   color: white;
 }
 
-#github {
+.sidediv {
   margin-left: 10%;
 }
 
-#github img {
-  width: 40px;
+.sidediv .logo {
+  margin-bottom: 2px;
+  display: inline-block;
 }
 
-#github span {
-  margin-left: 0.5em;
-  font-size: larger;
+.sidediv span {
+  display: inline-block;
+  top: 3.5rem;
   color: white;
   position: relative;
-  bottom: 0.8rem;
+  margin-left: 2rem;
+}
+
+#deploy {
+  margin-left: 4.5rem;
+}
+
+#netlify-logo {
+  width: 210px;
+  position: relative;
+  bottom: 3.5em;
+  left: 2em;
+}
+
+#github-logo {
+  width: 200px;
+  position: relative;
+}
+
+#netlify-logo:hover,
+#github-logo:hover {
+  cursor: pointer;
+  transform-origin: left top;
+  animation: scale 300ms ease-in-out forwards;
+}
+
+@keyframes scale {
+  to {
+    transform: scale(1.05);
+  }
+}
+#side-title {
+  font-family: 'Damion', cursive;
+  text-align: right;
+  color: white;
+  font-size: 6rem;
 }

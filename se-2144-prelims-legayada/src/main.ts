@@ -1,21 +1,9 @@
-//write main functionality here
-
-/**
- * Input will not be invokign the  active
- * if active then change teh display
- * get teh value of teh display and run an eval when clicking the equal button
- * the hello wll display from an array using choice
- * the goodbye will turn the input background to black and will run a settimeout function that
- * replacaes the value of it to 'goodbye'
- * if you click on the ac and it's active it will clear the display
- * if it's inactive will turn the calculator on
- */
-
 const specialButtons: NodeList = document.querySelectorAll('.special')!
 const operatorButtons: NodeList = document.querySelectorAll('.operator')!
 const digitButtons: NodeList = document.querySelectorAll('.digit')!
 const inputBox: HTMLInputElement = document.querySelector('#inputBox')!
 
+// adding listeners
 specialButtons.forEach((button) => {
   if (button instanceof HTMLButtonElement) {
     switch (button.innerText) {
@@ -49,8 +37,6 @@ operatorButtons.forEach((button) => {
       case '-':
         button.addEventListener('click', addToDisplay)
         break
-      // the equal button should change the input box value
-
       default:
         errorMessage('Unexpected input!')
     }
@@ -148,13 +134,12 @@ function backSpace() {
   }
 }
 
-//add to display to evaluate
+//  add to display to evaluate
 
 function addToDisplay(event: MouseEvent) {
   if (inputBox.classList.contains('active')) {
     if (event.target instanceof HTMLButtonElement) {
       const button = event.target
-      console.log(button.innerText)
       const hellos = ['Hello', 'Hola', 'Kamusta', 'こんにちは', '你好']
       if (hellos.includes(inputBox.value)) {
         allClear()
@@ -163,6 +148,8 @@ function addToDisplay(event: MouseEvent) {
     }
   }
 }
+
+//  evaluate display IF valid
 
 function evaluateDisplay(event: MouseEvent) {
   if (inputBox.classList.contains('active')) {
@@ -182,6 +169,8 @@ function evaluateDisplay(event: MouseEvent) {
     }
   }
 }
+
+// serves as the error handler
 
 function errorMessage(message: string = 'Something went wrong!') {
   alert(message)
