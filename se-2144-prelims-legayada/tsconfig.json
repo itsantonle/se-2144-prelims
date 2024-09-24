@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "module": "ES6",
+    "target": "ES2016",
+    "lib": ["es6", "dom", "es2016", "ES2016.Array.Include"],
+    "rootDir": "./src"
+  },
+  "exclude": ["node_modules"],
+  "include": ["src"]
+}
