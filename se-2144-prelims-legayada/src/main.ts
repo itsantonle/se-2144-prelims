@@ -115,7 +115,6 @@ function randomHello(event: MouseEvent) {
 
 function allClear() {
   if (inputBox.classList.contains('active')) {
-    console.log('all clear')
     inputBox.value = ''
   } else {
     inputBox.classList.remove('inactive')
@@ -125,7 +124,6 @@ function allClear() {
 
 function backSpace() {
   if (inputBox.classList.contains('active')) {
-    console.log('backspace')
     if (inputBox.value.length > 0) {
       inputBox.value = inputBox.value.slice(0, -1)
     } else {
@@ -155,7 +153,7 @@ function evaluateDisplay(event: MouseEvent) {
   if (inputBox.classList.contains('active')) {
     if (event.target instanceof HTMLButtonElement) {
       const button = event.target
-      console.log(button.innerHTML)
+
       try {
         const answer = eval(inputBox.value)
         if (answer == Infinity) {

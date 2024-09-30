@@ -39,6 +39,7 @@ input {
   border-radius: 1rem;
 }
 
+/* the appearance will change depending on if the input has an inactive or active class  */
 input.active {
   background: rgb(250, 238, 238);
 }
@@ -128,6 +129,7 @@ p {
   animation: scale 300ms ease-in-out forwards;
 }
 
+/* this serves as the animation to scale logos up when hoevered */
 @keyframes scale {
   to {
     transform: scale(1.05);
