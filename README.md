@@ -5,7 +5,7 @@ Prelims for Web Development
 Deployed on: https://se-2144-prelims-legayada.netlify.app/
 
 # Notes on use
-when cloning from the repo (running program from vscode) 
+when cloning/forking from the repo (running program from vscode) 
 ```
 cd se-2144-prelims-legayada
 npm run dev
